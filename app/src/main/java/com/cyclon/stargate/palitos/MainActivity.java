@@ -10,6 +10,8 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.Random;
+
 public class MainActivity extends AppCompatActivity {
     private EditText num;
     private ImageButton pross;
@@ -62,5 +64,23 @@ public class MainActivity extends AppCompatActivity {
 
         }
     };
+
+    int getPalpPC(int maxPC, int maxUser){
+        Random pc = new Random();
+        Random user = new Random();
+        int palitosPC, palitosUser, palp;
+
+        //número de palitos que o pc vai jogar
+        palitosPC = (pc.nextInt(maxPC) + 1);
+
+        //chutar o número de palitos que o usuário jogou...
+        palitosUser = (user.nextInt(maxUser) + 1);
+        //ou assumir que ele jogou todos?
+        //palitosUser = maxUser
+
+        palp = palitosPC + palitosUser;
+
+        return palp;
+    }
 
 }
