@@ -1,9 +1,9 @@
 <resources>
     <string name="app_name">Palitos</string>
     <string name="hintPalpite">Palpite</string>
-    <string name="hintJogar">Soma das jogadas pc + usuário = palpite</string>
+    <string name="textPalpite">Soma das jogadas pc + usuário = palpite</string>
 
-    <string name="textPalpite">Jogada</string>
+    <string name="hintJogada">Jogada</string>
     <string name="textJogar">Quantidade de palitos a jogar</string>
     <string name="toast_empate">Empate</string>
     <string name="toast_user">Você venceu!</string>

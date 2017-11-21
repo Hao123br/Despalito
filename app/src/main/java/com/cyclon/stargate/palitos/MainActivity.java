@@ -22,6 +22,12 @@ public class MainActivity extends AppCompatActivity {
     private Button repetir;
     private TextView textEdit;
     private View halfBackg;
+    private TextView inv;
+    private TextView tvPalpitePC;
+
+
+    private TextView tvPalpiteUser;
+    private TextView tvJogadaUser;
 
     private int palpUser;
     private int palpPC;
@@ -37,14 +43,20 @@ public class MainActivity extends AppCompatActivity {
         pross = findViewById(R.id.continuar);//botão continuar
         num = findViewById(R.id.numUser);//edittext
         repetir = findViewById(R.id.repetir);//repetir btão
-        textEdit = findViewById(R.id.textEdit);//textos de guia - edit
+        textEdit = findViewById(R.id.guiaEditNum);//textos de guia - edit
         halfBackg = findViewById(R.id.view);
+        inv = findViewById(R.id.guiaBotao);
+        tvPalpitePC = findViewById(R.id.tvPalpitePC);
+        tvJogadaPC = findViewById(R.id.tvJogadaPC);
+        tvPalpiteUser = findViewById(R.id.tvPalpiteUser);
+        tvJogadaUser = findViewById(R.id.tvJogadaUser);
+
 
 
         num.setHint(getResources().getString(R.string.hintPalpite));
         textEdit.setText(getResources().getString(R.string.textPalpite));
-        pross.setBackgroundColor(Color.rgb(117, 144, 7));//colocar uma cor para cada etapa a ser passada, ex.:Palpite, Jogada, Vitória ou derrota
-        halfBackg.setBackgroundColor(Color.rgb(117, 144, 7));
+        pross.setBackgroundColor(Color.rgb(192, 192, 192));//cor botao silver
+        halfBackg.setBackgroundColor(Color.rgb(105, 105, 105)); //cor view DimGray
 
         repetir.setOnClickListener(repete);
         pross.setOnClickListener(listener);
@@ -57,17 +69,22 @@ public class MainActivity extends AppCompatActivity {
             switch (cont) {
                 case 0:
                     palpUser = Integer.parseInt(num.getText().toString()); //palpite
+                    tvPalpiteUser.setText("Seu palpite: "+palpUser);
 
+                    num.setText("");
+                    num.setHint(R.string.hintJogada);
                     break;
                 case 1:
-                    textEdit.setText(R.string.textJogar); //jogada
-                    jogUser = Integer.parseInt(num.getText().toString());
 
-                    jogPC = getJogadaPC(MAXPALITOS);
-                    palpPC = getPalpPC(jogPC, MAXPALITOS);
+                    jogUser = Integer.parseInt(num.getText().toString());
+                    textEdit.setText(R.string.textJogar); //jogada
+                    tvJogadaUser.setText("Sua jogada: "+jogUser);
+
+                    jogPC = getJogadaPC(MAXPALITOS, tvJogadaPC);
+                    palpPC = getPalpPC(jogPC, MAXPALITOS, tvPalpitePC);
 
                     showToast(getWinner());
-
+                    inv.setVisibility(View.GONE);
                     repetir.setVisibility(View.VISIBLE);
                     textEdit.setVisibility(View.GONE);
                     num.setVisibility(View.GONE);
@@ -83,24 +100,29 @@ public class MainActivity extends AppCompatActivity {
         public void onClick(View v) {
             num.setVisibility(View.VISIBLE);
             pross.setVisibility(View.VISIBLE);
+            inv.setVisibility(View.VISIBLE);
+            textEdit.setVisibility(View.VISIBLE);
             cont = 0;
             textEdit.setText(getResources().getString(R.string.textPalpite));
+            repetir.setVisibility(View.INVISIBLE);
 
         }
     };
 
 
-    static int getJogadaPC(int maxPC) {
+    static int getJogadaPC(int maxPC, TextView tvJogadaPC) {
         Random pc = new Random();
         int jogadaPC;
 
         //número de palitos que o pc vai jogar
         jogadaPC = (pc.nextInt(maxPC) + 1);
 
+        tvJogadaPC.setText("Jogada PC: " +jogadaPC);
+
         return jogadaPC;
     }
 
-    static int getPalpPC(int jogadaPC, int maxUser) {
+    static int getPalpPC(int jogadaPC, int maxUser,TextView tvPalpitePC) {
         //Random user = new Random();
         int jogadaUser, palp;
 
@@ -110,6 +132,8 @@ public class MainActivity extends AppCompatActivity {
         jogadaUser = maxUser;
 
         palp = jogadaPC + jogadaUser;
+
+        tvPalpitePC.setText("Palpite PC: " +palp);
 
         return palp;
     }
