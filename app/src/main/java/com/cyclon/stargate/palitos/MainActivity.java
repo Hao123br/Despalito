@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private View halfBackg;
     private TextView inv;
     private TextView tvPalpitePC;
+    private TextView tvJogadaPC;
 
 
     private TextView tvPalpiteUser;
