@@ -71,18 +71,17 @@ public class MainActivity extends AppCompatActivity {
                 case 0:
                     palpUser = Integer.parseInt(num.getText().toString()); //palpite
                     tvPalpiteUser.setText("Seu palpite: "+palpUser);
+                    jogPC = getJogadaPC(MAXPALITOS);
+                    palpPC = getPalpPC(jogPC, MAXPALITOS, tvPalpitePC);
 
                     num.setText("");
                     num.setHint(R.string.hintJogada);
                     break;
                 case 1:
-
                     jogUser = Integer.parseInt(num.getText().toString());
                     textEdit.setText(R.string.textJogar); //jogada
                     tvJogadaUser.setText("Sua jogada: "+jogUser);
-
-                    jogPC = getJogadaPC(MAXPALITOS, tvJogadaPC);
-                    palpPC = getPalpPC(jogPC, MAXPALITOS, tvPalpitePC);
+                    tvJogadaPC.setText("Jogada PC: " +jogPC);
 
                     showToast(getWinner());
                     inv.setVisibility(View.GONE);
@@ -111,14 +110,12 @@ public class MainActivity extends AppCompatActivity {
     };
 
 
-    static int getJogadaPC(int maxPC, TextView tvJogadaPC) {
+    static int getJogadaPC(int maxPC) {
         Random pc = new Random();
         int jogadaPC;
 
         //número de palitos que o pc vai jogar
         jogadaPC = (pc.nextInt(maxPC) + 1);
-
-        tvJogadaPC.setText("Jogada PC: " +jogadaPC);
 
         return jogadaPC;
     }
