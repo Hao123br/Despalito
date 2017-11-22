@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView inv;
     private TextView tvPalpitePC;
     private TextView tvJogadaPC;
-
+    private boolean btVisibility = false;
 
     private TextView tvPalpiteUser;
     private TextView tvJogadaUser;
@@ -56,8 +56,10 @@ public class MainActivity extends AppCompatActivity {
 
         num.setHint(getResources().getString(R.string.hintPalpite));
         textEdit.setText(getResources().getString(R.string.textPalpite));
-        pross.setBackgroundColor(Color.rgb(192, 192, 192));//cor botao silver
+        pross.setBackgroundColor(Color.alpha(R.color.corPalpite));//cor botao silver
         halfBackg.setBackgroundColor(Color.rgb(105, 105, 105)); //cor view DimGray
+
+
 
         repetir.setOnClickListener(repete);
         pross.setOnClickListener(listener);
@@ -84,11 +86,9 @@ public class MainActivity extends AppCompatActivity {
                     tvJogadaPC.setText("Jogada PC: " +jogPC);
 
                     showToast(getWinner());
-                    inv.setVisibility(View.GONE);
-                    repetir.setVisibility(View.VISIBLE);
-                    textEdit.setVisibility(View.GONE);
-                    num.setVisibility(View.GONE);
-                    pross.setVisibility(View.GONE);
+                    btVisibility = false;
+                    setVisibilitys();
+
                     break;
             }
             cont++;
@@ -98,14 +98,10 @@ public class MainActivity extends AppCompatActivity {
     View.OnClickListener repete = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            num.setVisibility(View.VISIBLE);
-            pross.setVisibility(View.VISIBLE);
-            inv.setVisibility(View.VISIBLE);
-            textEdit.setVisibility(View.VISIBLE);
             cont = 0;
             textEdit.setText(getResources().getString(R.string.textPalpite));
-            repetir.setVisibility(View.INVISIBLE);
-
+            btVisibility = true;
+            setVisibilitys();
         }
     };
 
@@ -173,4 +169,31 @@ public class MainActivity extends AppCompatActivity {
         toast = Toast.makeText(this,textId, Toast.LENGTH_SHORT);
         toast.show();
     }
+
+
+
+    void setVisibilitys(){
+        if(!btVisibility){
+            inv.setVisibility(View.GONE);
+            repetir.setVisibility(View.VISIBLE);
+            textEdit.setVisibility(View.GONE);
+            num.setVisibility(View.GONE);
+            pross.setVisibility(View.GONE);
+        }else{
+            num.setVisibility(View.VISIBLE);
+            pross.setVisibility(View.VISIBLE);
+            inv.setVisibility(View.VISIBLE);
+            textEdit.setVisibility(View.VISIBLE);
+            repetir.setVisibility(View.INVISIBLE);
+        }
+
+    }
+
+    void setBackgroundColors(){
+
+
+    }
+
+
+
 }

@@ -3,5 +3,11 @@
     <color name="colorPrimary">#3fb58e</color>
     <color name="colorPrimaryDark">#c24b4f</color>
     <color name="colorAccent">#89434a</color>
-    <color name="colorView">#ccdfda</color>
+
+    >---cores usadas nas views
+    <color name = "corPalpite">#bab6b1</color>
+    <color name = "corJogada">#8b837e</color>
+    <color name = "corResultW">#86b17c</color>
+    <color name = "corResultL">#b67276</color>
+    <color name = "corResultE">#efaa77</color>
 </resources>

@@ -12,7 +12,7 @@
         android:id="@+id/view"
         android:layout_width="0dp"
         android:layout_height="257dp"
-        android:background="@color/colorView"
+        android:background="@color/corPalpite"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -160,19 +160,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="60dp"
-        app:layout_constraintBottom_toTopOf="@+id/tvJogadaPC"
+        android:text="Palpite PC:"
+        app:layout_constraintBottom_toBottomOf="@+id/tvPalpiteUser"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgPalitosPC" />
+        app:layout_constraintTop_toTopOf="@+id/tvPalpiteUser" />
 
     <TextView
         android:id="@+id/tvJogadaPC"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:layout_marginEnd="60dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginBottom="24dp"
+        android:layout_marginTop="8dp"
+        android:text="Jogada PC: "
         app:layout_constraintBottom_toTopOf="@+id/view"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/tvPalpitePC"
         app:layout_constraintTop_toBottomOf="@+id/tvPalpitePC" />
 
     <TextView
@@ -181,6 +182,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
         android:layout_marginTop="8dp"
+        android:text="Seu palpite:"
         app:layout_constraintBottom_toTopOf="@+id/tvJogadaUser"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imgPalitosUser" />
@@ -189,8 +191,9 @@
         android:id="@+id/tvJogadaUser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="16dp"
         android:layout_marginStart="60dp"
+        android:text="Sua jogada: "
         app:layout_constraintBottom_toTopOf="@+id/view"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvPalpiteUser" />
