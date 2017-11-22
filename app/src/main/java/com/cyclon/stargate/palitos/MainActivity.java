@@ -3,11 +3,13 @@ package com.cyclon.stargate.palitos;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -53,12 +55,10 @@ public class MainActivity extends AppCompatActivity {
         tvJogadaUser = findViewById(R.id.tvJogadaUser);
 
 
-
         num.setHint(getResources().getString(R.string.hintPalpite));
         textEdit.setText(getResources().getString(R.string.textPalpite));
         pross.setBackgroundColor(Color.alpha(R.color.corPalpite));//cor botao silver
         halfBackg.setBackgroundColor(Color.rgb(105, 105, 105)); //cor view DimGray
-
 
 
         repetir.setOnClickListener(repete);
@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
             switch (cont) {
                 case 0:
                     palpUser = Integer.parseInt(num.getText().toString()); //palpite
-                    tvPalpiteUser.setText("Seu palpite: "+palpUser);
+                    tvPalpiteUser.setText("Seu palpite: " + palpUser);
                     jogPC = getJogadaPC(MAXPALITOS);
                     palpPC = getPalpPC(jogPC, MAXPALITOS, tvPalpitePC);
 
@@ -82,8 +82,19 @@ public class MainActivity extends AppCompatActivity {
                 case 1:
                     jogUser = Integer.parseInt(num.getText().toString());
                     textEdit.setText(R.string.textJogar); //jogada
-                    tvJogadaUser.setText("Sua jogada: "+jogUser);
-                    tvJogadaPC.setText("Jogada PC: " +jogPC);
+                    tvJogadaUser.setText("Sua jogada: " + jogUser);
+                    tvJogadaPC.setText("Jogada PC: " + jogPC);
+
+                    LinearLayout layout, layout2;
+                    ImageView palito, palito2;
+
+                    layout = findViewById(R.id.imgPalitosUser);
+                    palito = findViewById(R.id.palito);
+                    showPalitos(layout, palito, jogUser);
+
+                    layout2 = findViewById(R.id.imgPalitosPC);
+                    palito2 = findViewById(R.id.palitoPC);
+                    showPalitos(layout2, palito2, jogPC);
 
                     showToast(getWinner());
                     btVisibility = false;
@@ -116,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
         return jogadaPC;
     }
 
-    static int getPalpPC(int jogadaPC, int maxUser,TextView tvPalpitePC) {
+    static int getPalpPC(int jogadaPC, int maxUser, TextView tvPalpitePC) {
         Random user = new Random();
         int jogadaUser, palp;
 
@@ -127,13 +138,13 @@ public class MainActivity extends AppCompatActivity {
 
         palp = jogadaPC + jogadaUser;
 
-        tvPalpitePC.setText("Palpite PC: " +palp);
+        tvPalpitePC.setText("Palpite PC: " + palp);
 
         return palp;
     }
 
     int getWinner() {
-        int total,difPC,difUser;
+        int total, difPC, difUser;
 
         total = jogUser + jogPC;
 
@@ -154,11 +165,11 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    void showToast(int winner){
+    void showToast(int winner) {
         int textId = 0;
         Toast toast;
 
-        switch (winner){
+        switch (winner) {
             case EMPATE:
                 textId = R.string.toast_empate;
                 break;
@@ -169,20 +180,19 @@ public class MainActivity extends AppCompatActivity {
                 textId = R.string.toast_pc;
         }
 
-        toast = Toast.makeText(this,textId, Toast.LENGTH_SHORT);
+        toast = Toast.makeText(this, textId, Toast.LENGTH_SHORT);
         toast.show();
     }
 
 
-
-    void setVisibilitys(){
-        if(!btVisibility){
+    void setVisibilitys() {
+        if (!btVisibility) {
             inv.setVisibility(View.GONE);
             repetir.setVisibility(View.VISIBLE);
             textEdit.setVisibility(View.GONE);
             num.setVisibility(View.GONE);
             pross.setVisibility(View.GONE);
-        }else{
+        } else {
             num.setVisibility(View.VISIBLE);
             pross.setVisibility(View.VISIBLE);
             inv.setVisibility(View.VISIBLE);
@@ -192,11 +202,31 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    void setBackgroundColors(){
+    void setBackgroundColors() {
 
 
     }
 
+    void showPalitos(LinearLayout layout, ImageView palito, int num) {
+        LinearLayout.LayoutParams params;
+        ImageView copy;
+        int count;
 
+        params = (LinearLayout.LayoutParams) palito.getLayoutParams();
+
+        count = layout.getChildCount();
+        if (count > num) {
+            for (int i = count; i > num; i--) {
+                layout.removeViewAt(i - 1);
+            }
+        } else {
+            for (int i = count; i < num; i++) {
+                copy = new ImageView(this);
+                copy.setImageResource(R.drawable.palito);
+                copy.setLayoutParams(params);
+                layout.addView(copy);
+            }
+        }
+    }
 
 }
