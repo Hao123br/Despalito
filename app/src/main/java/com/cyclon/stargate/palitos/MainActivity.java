@@ -1,5 +1,6 @@
 package com.cyclon.stargate.palitos;
 
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,8 +17,7 @@ import android.widget.Toast;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
-    private final static int MAXPALITOS = 6,
-            EMPATE = 0, USERWINS = 1, PCWINS = 2;
+
     private EditText num;
     private ImageButton pross;
     private ImageView palito;
@@ -27,11 +27,13 @@ public class MainActivity extends AppCompatActivity {
     private TextView inv;
     private TextView tvPalpitePC;
     private TextView tvJogadaPC;
-    private boolean btVisibility = false;
-
     private TextView tvPalpiteUser;
     private TextView tvJogadaUser;
 
+
+    private boolean btVisibility = false;
+    private final static int MAXPALITOS = 6,
+            EMPATE = 0, USERWINS = 1, PCWINS = 2;
     private int palpUser;
     private int palpPC;
     private int jogUser;
@@ -54,11 +56,8 @@ public class MainActivity extends AppCompatActivity {
         tvPalpiteUser = findViewById(R.id.tvPalpiteUser);
         tvJogadaUser = findViewById(R.id.tvJogadaUser);
 
-
         num.setHint(getResources().getString(R.string.hintPalpite));
         textEdit.setText(getResources().getString(R.string.textPalpite));
-        pross.setBackgroundColor(Color.alpha(R.color.corPalpite));//cor botao silver
-        halfBackg.setBackgroundColor(Color.rgb(105, 105, 105)); //cor view DimGray
 
 
         repetir.setOnClickListener(repete);
@@ -75,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
                     tvPalpiteUser.setText("Seu palpite: " + palpUser);
                     jogPC = getJogadaPC(MAXPALITOS);
                     palpPC = getPalpPC(jogPC, MAXPALITOS, tvPalpitePC);
-
+                    setBackgroundColors(1);
                     num.setText("");
                     num.setHint(R.string.hintJogada);
                     break;
@@ -110,9 +109,12 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             cont = 0;
+
             textEdit.setText(getResources().getString(R.string.textPalpite));
             btVisibility = true;
+            setBackgroundColors(0);
             setVisibilitys();
+
         }
     };
 
@@ -202,9 +204,31 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    void setBackgroundColors() {
+    void setBackgroundColors(int color){
+        Resources res = getResources();
 
-
+            switch (color){
+                case 0:
+                    pross.setBackgroundColor(res.getColor(R.color.corJogada));
+                    halfBackg.setBackgroundColor(res.getColor(R.color.corPalpite));
+                    break;
+                case 1:
+                    pross.setBackgroundColor(res.getColor(R.color.corPalpite));
+                    halfBackg.setBackgroundColor(res.getColor(R.color.corJogada));
+                    break;
+                case 2:
+                    pross.setBackgroundColor(res.getColor(R.color.corResultW));
+                    halfBackg.setBackgroundColor(res.getColor(R.color.corJogada));
+                    break;
+                case 3:
+                    pross.setBackgroundColor(res.getColor(R.color.corResultE));
+                    halfBackg.setBackgroundColor(res.getColor(R.color.corJogada));
+                    break;
+                case 4:
+                    pross.setBackgroundColor(res.getColor(R.color.corResultL));
+                    halfBackg.setBackgroundColor(res.getColor(R.color.corJogada));
+                    break;
+            }
     }
 
     void showPalitos(LinearLayout layout, ImageView palito, int num) {
