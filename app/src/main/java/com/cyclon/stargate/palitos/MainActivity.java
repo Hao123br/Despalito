@@ -133,21 +133,24 @@ public class MainActivity extends AppCompatActivity {
     }
 
     int getWinner() {
-        int total = jogPC + jogUser;
+        int total,difPC,difUser;
 
-        //O user acertou e o pc errou ou vice-versa?
-        if (palpUser == total ^ palpPC == total) {
-            //sim. Quem acertou?
-            if (palpUser == total) {
-                //O User
+        total = jogUser + jogPC;
+
+        difUser = total - palpUser;
+        difUser = Math.abs(difUser);
+        difPC = total - palpPC;
+        difPC = Math.abs(difPC);
+
+        if (difUser == difPC) {
+            return EMPATE;
+        } else {
+            //Se o palpite do usuário for mais próximo do total
+            if (difUser < difPC) {
                 return USERWINS;
             } else {
-                //O PC
                 return PCWINS;
             }
-        } else {
-            //Não, os dois acertaram ou os dois erraram
-            return EMPATE;
         }
     }
 
