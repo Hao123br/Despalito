@@ -124,13 +124,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     static int getPalpPC(int jogadaPC, int maxUser,TextView tvPalpitePC) {
-        //Random user = new Random();
+        Random user = new Random();
         int jogadaUser, palp;
 
         //chutar o número de palitos que o usuário jogou...
-        //palitosUser = (user.nextInt(maxUser) + 1);
+        jogadaUser = (user.nextInt(maxUser) + 1);
         //ou assumir que ele jogou todos?
-        jogadaUser = maxUser;
+        //jogadaUser = maxUser;
 
         palp = jogadaPC + jogadaUser;
 
