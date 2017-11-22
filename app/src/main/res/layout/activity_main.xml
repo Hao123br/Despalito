@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#ffff"
-    tools:context="com.cyclon.stargate.palitos.MainActivity">
+                                             xmlns:app="http://schemas.android.com/apk/res-auto"
+                                             xmlns:tools="http://schemas.android.com/tools"
+                                             android:layout_width="match_parent"
+                                             android:layout_height="match_parent"
+                                             android:background="#ffff"
+                                             tools:context="com.cyclon.stargate.palitos.MainActivity">
 
 
     <View
@@ -33,18 +33,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.818" />
+        app:layout_constraintVertical_bias="0.818"/>
 
 
     <TextView
         android:id="@+id/guiaEditNum"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:text="@string/textPalpite"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/numUser"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.624" />
+        app:layout_constraintVertical_bias="0.624"/>
 
     <TextView
         android:id="@+id/guiaBotao"
@@ -56,7 +56,7 @@
         app:layout_constraintHorizontal_bias="0.06"
         app:layout_constraintStart_toStartOf="@+id/continuar"
         app:layout_constraintTop_toTopOf="@+id/guiaEditNum"
-        app:layout_constraintVertical_bias="0.26999998" />
+        app:layout_constraintVertical_bias="0.26999998"/>
 
     <EditText
         android:id="@+id/numUser"
@@ -74,7 +74,7 @@
         app:layout_constraintHorizontal_bias="0.072"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.699" />
+        app:layout_constraintVertical_bias="0.699"/>
 
     <ImageButton
         android:id="@+id/continuar"
@@ -87,13 +87,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/numUser"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/ic_send_black_24dp" />
+        app:srcCompat="@drawable/ic_send_black_24dp"/>
 
     <LinearLayout
         android:id="@+id/imgPalitosUser"
-        android:layout_width="180dp"
+        android:layout_width="170dp"
         android:layout_height="140dp"
         android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginTop="8dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -107,23 +108,26 @@
             android:id="@+id/palito"
             android:layout_width="wrap_content"
             android:layout_height="74dp"
-            android:layout_marginEnd="4dp"
-            android:layout_marginStart="4dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.022"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0"
-            app:srcCompat="@drawable/palito" />
+            app:srcCompat="@drawable/palito"/>
 
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/imgPalitosPC"
-        android:layout_width="180dp"
+        android:layout_width="170dp"
         android:layout_height="140dp"
         android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginTop="8dp"
         android:gravity="right"
         android:orientation="horizontal"
@@ -138,73 +142,140 @@
             android:id="@+id/palitoPC"
             android:layout_width="wrap_content"
             android:layout_height="74dp"
-            android:layout_marginEnd="4dp"
-            android:layout_marginStart="4dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.022"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0"
-            app:srcCompat="@drawable/palito" />
+            app:srcCompat="@drawable/palito"/>
     </LinearLayout>
 
     <TextView
         android:id="@+id/tvPalpitePC"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="60dp"
-        android:text="Palpite PC:"
+        android:layout_marginEnd="136dp"
+        android:text="Palpite:"
         app:layout_constraintBottom_toBottomOf="@+id/tvPalpiteUser"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tvPalpiteUser" />
+        app:layout_constraintTop_toTopOf="@+id/tvPalpiteUser"
+        app:layout_constraintVertical_bias="0.0"/>
 
     <TextView
         android:id="@+id/tvJogadaPC"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="32dp"
+        android:layout_marginEnd="32dp"
         android:layout_marginTop="8dp"
-        android:text="Jogada PC: "
+        android:text="Jogada: "
         app:layout_constraintBottom_toTopOf="@+id/view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/tvPalpitePC"
-        app:layout_constraintTop_toBottomOf="@+id/tvPalpitePC" />
+        app:layout_constraintTop_toBottomOf="@+id/tvPalpitePC"
+        app:layout_constraintVertical_bias="0.533"/>
 
     <TextView
         android:id="@+id/tvPalpiteUser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="Seu palpite:"
         app:layout_constraintBottom_toTopOf="@+id/tvJogadaUser"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgPalitosUser" />
+        app:layout_constraintTop_toBottomOf="@+id/imgPalitosUser"/>
 
     <TextView
         android:id="@+id/tvJogadaUser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:layout_marginStart="60dp"
+        android:layout_marginStart="8dp"
         android:text="Sua jogada: "
         app:layout_constraintBottom_toTopOf="@+id/view"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvPalpiteUser" />
+        app:layout_constraintTop_toBottomOf="@+id/tvPalpiteUser"/>
 
     <TextView
         android:id="@+id/eResultado"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:textSize="24dp"
         app:layout_constraintBottom_toTopOf="@+id/repetir"
-        app:layout_constraintEnd_toStartOf="@+id/guiaBotao"
-        app:layout_constraintHorizontal_bias="0.578"
-        app:layout_constraintStart_toEndOf="@+id/guiaEditNum"
+        app:layout_constraintEnd_toEndOf="@+id/pRestantes"
+        app:layout_constraintStart_toStartOf="@+id/pRestantes"
         app:layout_constraintTop_toTopOf="@+id/view"
-        app:layout_constraintVertical_bias="0.388" />
+        app:layout_constraintVertical_bias="0.388"/>
+
+    <TextView
+        android:id="@+id/pRestantes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:textSize="9dp"
+        app:layout_constraintBottom_toBottomOf="@+id/repetir"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/eResultado"
+        app:layout_constraintVertical_bias="0.0"/>
+
+    <TextView
+        android:id="@+id/qtdPalitosPC"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="4dp"
+        android:text="Qtd.Palitos:"
+        app:layout_constraintBottom_toTopOf="@+id/view"
+        app:layout_constraintStart_toStartOf="@+id/tvJogadaPC"
+        app:layout_constraintTop_toBottomOf="@+id/tvJogadaPC"
+        app:layout_constraintVertical_bias="0.0"/>
+
+    <TextView
+        android:id="@+id/qtdPalitosUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Qtd.Palitos:"
+        app:layout_constraintBottom_toTopOf="@+id/view"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvJogadaUser"
+        app:layout_constraintVertical_bias="1.0"/>
+
+    <TextView
+        android:id="@+id/nome1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:text="Você"
+        app:layout_constraintBottom_toTopOf="@+id/tvPalpiteUser"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.217"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/nome2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:text="Cyclon"
+        app:layout_constraintBottom_toTopOf="@+id/tvPalpitePC"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.649"
+        app:layout_constraintStart_toEndOf="@+id/nome1"/>
 
 </android.support.constraint.ConstraintLayout>

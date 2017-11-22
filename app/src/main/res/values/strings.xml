@@ -1,11 +1,18 @@
 <resources>
     <string name="app_name">Palitos</string>
     <string name="hintPalpite">Palpite</string>
-    <string name="textPalpite">Soma das jogadas pc + usuário = palpite</string>
+    <string name="textPalpite">Sua jogada + jogada Cyclon = palpite</string>
 
     <string name="hintJogada">Jogada</string>
     <string name="textJogar">Quantidade de palitos a jogar</string>
     <string name="toast_empate">Empate</string>
     <string name="toast_user">Você venceu!</string>
-    <string name="toast_pc">Eu venci XD</string>
+    <string name="toast_pc">CYCLON: - Eu venci! XD</string>
+    <string name="msg_pcWin">CYCLON: - VOCÊ PROVOU DA IRA E DO DESEMPENHO DE CYCLON, HUMANO!</string>
+    <string name="msg_userWin">CYCLON: - Cyclon está desapontado com o próprio desempenho, parabéns humano.</string>
+    <string name = "placarPalpitePC">Palpite PC: </string>
+    <string name = "placarJogarPC">Jogada PC: </string>
+    <string name = "placarJogarUser">Seu palpite: </string>
+    <string name = "placarPalpiteUser">Sua jogada: </string>
+
 </resources>
