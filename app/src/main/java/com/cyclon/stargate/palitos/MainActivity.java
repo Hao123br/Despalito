@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -107,6 +109,17 @@ public class MainActivity extends AppCompatActivity
                         }else {
                             tvJogadaUser.setText(getResources().getString(R.string.placarJogarUser)+""+ jogUser);
                             tvJogadaPC.setText(getResources().getString(R.string.placarJogarPC)+""+ jogPC);
+
+                            LinearLayout layout, layout2;
+                            ImageView palito, palito2;
+
+                            layout = findViewById(R.id.imgPalitosUser);
+                            palito = findViewById(R.id.palito);
+                            showPalitos(layout, palito, jogUser);
+
+                            layout2 = findViewById(R.id.imgPalitosPC);
+                            palito2 = findViewById(R.id.palitoPC);
+                            showPalitos(layout2, palito2, jogPC);
 
                             showToast(getWinner());
                             btVisibility = false;
@@ -287,5 +300,24 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
+    void showPalitos(LinearLayout layout, ImageView palito, int num) {
+        LinearLayout.LayoutParams params;
+        ImageView copy;
+        int count;
 
+        params = (LinearLayout.LayoutParams) palito.getLayoutParams();
+        count = layout.getChildCount();
+        if (count > num) {
+            for (int i = count; i > num; i--) {
+                layout.removeViewAt(i - 1);
+            }
+        } else {
+            for (int i = count; i < num; i++) {
+                copy = new ImageView(this);
+                copy.setImageResource(R.drawable.palito);
+                copy.setLayoutParams(params);
+                layout.addView(copy);
+            }
+        }
+    }
 }
