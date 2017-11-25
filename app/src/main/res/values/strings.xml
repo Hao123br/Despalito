@@ -12,7 +12,8 @@
     <string name="msg_userWin">CYCLON: - Cyclon está desapontado com o próprio desempenho, parabéns humano.</string>
     <string name = "placarPalpitePC">Palpite PC: </string>
     <string name = "placarJogarPC">Jogada PC: </string>
-    <string name = "placarJogarUser">Seu palpite: </string>
-    <string name = "placarPalpiteUser">Sua jogada: </string>
+    <string name = "placarJogarUser">Sua jogada: </string>
+    <string name = "placarPalpiteUser">Seu palpite: </string>
+    <string name="qtdPalitos">Qtd.Palitos: </string>
 
 </resources>
