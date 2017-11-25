@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity
 {
     private final static int
             MAXPALITOS = 6, EMPATE = 0,
-            USERWINS = 1, PCWINS = 2;
+            USERWINS = 1, CYCLONWINS = 2;
 
     private EditText num;
     private ImageButton pross;
@@ -46,6 +46,7 @@ public class MainActivity extends AppCompatActivity
     private int resPalitosPC = MAXPALITOS;
 
     int cont = 0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -93,8 +94,8 @@ public class MainActivity extends AppCompatActivity
                         palpUser = Integer.parseInt(numText);
                         if(palpUser<2) {
                             Toast.makeText(MainActivity.this, "Não é possível palpite menor que dois!", Toast.LENGTH_LONG).show();
-                        }else if(palpUser>12) {
-                            Toast.makeText(MainActivity.this, "Não é possível palpite maior que doze!", Toast.LENGTH_LONG).show();
+                        }else if(palpUser>(resPalitosPC+resPalitosUser)) {
+                            Toast.makeText(MainActivity.this, "Não é possível palpite maior do que a soma do total de palitos!", Toast.LENGTH_LONG).show();
                         }else{
                             tvPalpiteUser.setText(getString(R.string.placarPalpiteUser) + palpUser);
                             Utils.hideKeyboard(MainActivity.this);
@@ -150,8 +151,8 @@ public class MainActivity extends AppCompatActivity
         public void onClick(View v)
         {
             if(gameOver) {
-                resPalitosPC = 6;
-                resPalitosUser = 6;
+                resPalitosPC = MAXPALITOS;
+                resPalitosUser = MAXPALITOS;
                 qtdPalitosUser.setText(getString(R.string.qtdPalitos) + resPalitosUser);
                 qtdPalitosPC.setText(getString(R.string.qtdPalitos) + resPalitosPC);
             }
@@ -171,6 +172,7 @@ public class MainActivity extends AppCompatActivity
         Random pc = new Random();
         int jogadaPC;
 
+        
         //número de palitos que o pc vai jogar
         jogadaPC = (pc.nextInt(maxPC) + 1);
 
@@ -212,7 +214,7 @@ public class MainActivity extends AppCompatActivity
             } else {
                 resPalitosPC--;
                 qtdPalitosPC.setText(getString(R.string.qtdPalitos) + resPalitosPC);
-                return PCWINS;
+                return CYCLONWINS;
             }
         }
     }
@@ -229,15 +231,15 @@ public class MainActivity extends AppCompatActivity
             case USERWINS:
                 textId = R.string.toast_user;
                 setBackgroundColors(2);
-                if(resPalitosUser==0){
+                if(resPalitosUser==1){
                     gameOver = true;
                     win = USERWINS;
                 }
                 break;
-            case PCWINS:
-                if(resPalitosPC==0){
+            case CYCLONWINS:
+                if(resPalitosPC==1){
                     gameOver = true;
-                    win = PCWINS;
+                    win = CYCLONWINS;
                 }
 
                 textId = R.string.toast_pc;
@@ -281,8 +283,8 @@ public class MainActivity extends AppCompatActivity
             tvRestantes.setText("");
             tvJogadaUser.setText(R.string.placarJogarUser);
             tvJogadaPC.setText(R.string.placarJogarPC);
-            tvPalpitePC.setText(R.string.placarPalpiteUser);
-            tvPalpiteUser.setText(R.string.placarPalpitePC);
+            tvPalpitePC.setText(R.string.placarPalpitePC);
+            tvPalpiteUser.setText(R.string.placarPalpiteUser);
 
         }
 
